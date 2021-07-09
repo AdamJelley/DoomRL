@@ -1,0 +1,12 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# MacOS files
+.DS_Store
+
+# Saved Models
+*.zip
+
+# Tensorboard Logs
+*tensorboard*

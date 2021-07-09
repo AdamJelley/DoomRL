@@ -2,7 +2,7 @@ import numpy as np
 import gym
 import vizdoomgym
 import cv2
-from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize
+from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize, VecTransposeImage
 from stable_baselines3.common.monitor import Monitor
 
 class PreprocessFrame(gym.ObservationWrapper):
@@ -52,4 +52,5 @@ def create_env(scenario='VizdoomBasic-v0', repeat=4, rescale_factor=0.5, render_
     env = Monitor(env)
     env = DummyVecEnv([lambda: env])
     env = VecNormalize(env, norm_obs=True, norm_reward=True)
+    env = VecTransposeImage(env)
     return env

@@ -8,7 +8,7 @@ env_name = 'VizdoomBasic-v0'
 episodes = 10
 render_screen=True
 record_video=True
-output_gif_name = model_name+'_'+env_name+'_'+str(episodes)
+output_gif_name = model_name+'_'+env_name+'_'+str(episodes)+'episodes'
 
 if __name__ == '__main__':
 

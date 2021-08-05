@@ -3,12 +3,12 @@ from stable_baselines3 import PPO
 from preprocessing import create_env
 from utils import save_gif
 
-model_name = 'PPO_Basic'
-env_name = 'VizdoomBasic-v0'
-episodes = 10
+model_name = 'PPO'
+env_name = 'VizdoomCorridor-v0'
+episodes = 1
 render_screen=True
 record_video=True
-output_gif_name = model_name+'_'+env_name+'_'+str(episodes)+'episodes'
+output_gif_name = model_name+'_'+env_name+'_KillingReward_'+str(episodes)+'eps'
 
 if __name__ == '__main__':
 

@@ -1,6 +1,7 @@
 import numpy as np
 import gym
 import vizdoomgym
+import vizdoom as vzd
 import cv2
 from stable_baselines3.common.vec_env import DummyVecEnv, VecNormalize, VecTransposeImage
 from stable_baselines3.common.monitor import Monitor
@@ -26,6 +27,7 @@ class RepeatAction(gym.Wrapper):
         self.render_screen = render_screen
         self.record_video = record_video
         self.images = []
+        self.killcount = 0
 
     def step(self, action):
         t_reward = 0.0
@@ -33,6 +35,10 @@ class RepeatAction(gym.Wrapper):
         for _ in range(self.repeat):
             obs, reward, done, info = self.env.step(action)
             t_reward += reward
+            # Reward shaping: Add reward of 50 for killing enemies
+            if self.env.game.get_game_variable(vzd.GameVariable.KILLCOUNT)>self.killcount:
+                t_reward+=50
+                self.killcount=self.env.game.get_game_variable(vzd.GameVariable.KILLCOUNT)
             if self.render_screen:
                 self.env.render()
             if not done and self.record_video:

@@ -25,11 +25,11 @@ def train_agent(model_name, env_name, policy="CnnPolicy", frame_repeat=4, frame_
 
 if __name__ == '__main__':
 
-    model_name = 'PPO_Basic'
-    env_name = 'VizdoomBasic-v0'
+    model_name = 'PPO'
+    env_name = 'VizdoomCorridor-v0'
     policy = "CnnPolicy"
 
     train_agent(model_name, env_name, policy, 
                 frame_repeat=4, frame_rescale=0.5, 
-                train_timesteps=10000, eval_frequency=5000, 
+                train_timesteps=1000000, eval_frequency=10000, 
                 eval_episodes=5, final_eval_episodes=10)
